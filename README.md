@@ -40,7 +40,7 @@ public class DecryRequestBodyAdvice implements RequestBodyAdvice {
     @Override
     public HttpInputMessage beforeBodyRead(HttpInputMessage httpInputMessage, MethodParameter methodParameter,
                                            Type type, Class<? extends HttpMessageConverter<?>> aClass){
-        System.out.println("经过before");
+       
         if (methodParameter.getMethod().isAnnotationPresent(Decrypt.class)&&!properties.isDebug()){
             try {
                 return  new DecryptHttpInputMessage(httpInputMessage,UTF_8);
